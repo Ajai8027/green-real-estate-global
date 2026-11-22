@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. Tokens
-   ========================================================================== */
+/* Design tokens */
 :root {
   color-scheme: light;
 
@@ -25,9 +23,7 @@
   --gutter: 16px;
 }
 
-/* ==========================================================================
-   2. Base
-   ========================================================================== */
+/* Base */
 *,
 *::before,
 *::after {
@@ -45,7 +41,6 @@ body {
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -80,17 +75,14 @@ a {
   left: 8px;
 }
 
-/* Responsive headline breaks: the reference wraps at different words on
-   small screens versus tablet/desktop. */
+/* The headline breaks at a different word on small screens. */
 .br-wide {
   display: none;
 }
 
-/* ==========================================================================
-   3. Layout
-   ========================================================================== */
-/* The max-width reserves the gutter on each side so the content box is
-   exactly 1200px wide on large screens (120px outer margins at 1440px). */
+/* Layout */
+/* Reserving the gutter in the max-width keeps the content box at 1200px
+   on large screens, which gives 120px outer margins at 1440px. */
 .container {
   width: 100%;
   max-width: calc(1200px + 2 * var(--gutter));
@@ -111,12 +103,9 @@ a {
 
 .site-header__brand img {
   width: 205px;
-  height: auto;
 }
 
-/* ==========================================================================
-   4. Components
-   ========================================================================== */
+/* Components */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -142,20 +131,10 @@ a {
   border-color: var(--primary-hover);
 }
 
-.site-header__cta {
-  padding-inline: 12px;
-}
-
-.site-header__cta-short,
-.site-header__cta-long {
-  white-space: nowrap;
-}
-
 .site-header__cta-long {
   display: none;
 }
 
-/* --- Hero --- */
 .hero {
   padding-top: 24px;
 }
@@ -193,7 +172,6 @@ a {
   border-radius: var(--radius-lg);
 }
 
-/* --- Registration --- */
 .register {
   padding-top: 48px;
 }
@@ -230,7 +208,6 @@ a {
   line-height: 1.3;
 }
 
-/* --- Form controls --- */
 .field {
   margin-bottom: 20px;
 }
@@ -304,9 +281,7 @@ a {
   text-underline-offset: 2px;
 }
 
-/* ==========================================================================
-   5. Form states
-   ========================================================================== */
+/* Form feedback */
 .field__error,
 .form__status {
   margin: 6px 0 0;
@@ -314,17 +289,22 @@ a {
   line-height: 1.35;
 }
 
-.field__error {
-  color: var(--error);
-}
-
 .field__error:empty,
 .form__status:empty {
   display: none;
 }
 
+.field__error {
+  color: var(--error);
+}
+
 .consent__error {
   margin-top: 8px;
+}
+
+.form__status {
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .field input[aria-invalid="true"],
@@ -337,14 +317,7 @@ a {
   outline-offset: 2px;
 }
 
-.form__status {
-  color: var(--primary);
-  font-weight: 700;
-}
-
-/* ==========================================================================
-   6. Footer
-   ========================================================================== */
+/* Footer */
 .site-footer {
   margin-top: 76px;
   padding-block: 32px;
@@ -380,7 +353,6 @@ a {
   font-size: 13px;
 }
 
-/* --- Privacy page --- */
 .privacy-page {
   padding-top: 48px;
 }
@@ -402,9 +374,7 @@ a {
   margin-top: 8px;
 }
 
-/* ==========================================================================
-   7. Media queries — tablet (mobile-first)
-   ========================================================================== */
+/* Tablet and up */
 @media (min-width: 768px) {
   :root {
     --gutter: 32px;
@@ -435,10 +405,14 @@ a {
     font-size: 13px;
   }
 
-  .hero h1 {
-    margin-bottom: 44px;
+  .hero h1,
+  .privacy-page h1 {
     font-size: 44px;
     line-height: 54px;
+  }
+
+  .hero h1 {
+    margin-bottom: 44px;
   }
 
   .hero__text {
@@ -500,16 +474,9 @@ a {
   .site-footer__privacy {
     align-self: auto;
   }
-
-  .privacy-page h1 {
-    font-size: 44px;
-    line-height: 54px;
-  }
 }
 
-/* ==========================================================================
-   8. Media queries — desktop
-   ========================================================================== */
+/* Desktop and up */
 @media (min-width: 1024px) {
   :root {
     --gutter: 40px;
@@ -535,10 +502,14 @@ a {
     padding-top: 40px;
   }
 
-  .hero h1 {
-    margin-bottom: 16px;
+  .hero h1,
+  .privacy-page h1 {
     font-size: 52px;
     line-height: 64px;
+  }
+
+  .hero h1 {
+    margin-bottom: 16px;
   }
 
   .hero__text {
@@ -584,10 +555,5 @@ a {
   .site-footer {
     margin-top: 54px;
     padding-block: 40px;
-  }
-
-  .privacy-page h1 {
-    font-size: 52px;
-    line-height: 64px;
   }
 }

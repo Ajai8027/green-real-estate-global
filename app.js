@@ -1,98 +1,73 @@
-/* Client-side enquiry validation.
-   Nothing is transmitted, persisted or logged: the form is checked locally
-   and a successful result only confirms the fields passed their checks. */
-(function () {
-  'use strict';
+// Local-only validation: nothing is sent, stored or logged.
+const form = document.getElementById('register-form');
+const status = document.getElementById('form-status');
 
-  const form = document.getElementById('register-form');
-  if (!form) return;
+const name = document.getElementById('full-name');
+const email = document.getElementById('email');
+const homeType = document.getElementById('home-type');
+const consent = document.getElementById('consent');
 
-  const status = document.getElementById('form-status');
-  const nameInput = document.getElementById('full-name');
-  const emailInput = document.getElementById('email');
-  const typeInput = document.getElementById('home-type');
-  const consentInput = document.getElementById('consent');
+const allowedTypes = ['Apartment', 'Townhouse', 'Detached home'];
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const PERMITTED_TYPES = ['Apartment', 'Townhouse', 'Detached home'];
-  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const checks = [
-    {
-      input: nameInput,
-      error: document.getElementById('full-name-error'),
-      message: 'Enter your full name.',
-      isValid: function () {
-        return nameInput.value.trim().length > 0;
-      }
-    },
-    {
-      input: emailInput,
-      error: document.getElementById('email-error'),
-      message: 'Enter a valid email address.',
-      isValid: function () {
-        return EMAIL_PATTERN.test(emailInput.value.trim());
-      }
-    },
-    {
-      input: typeInput,
-      error: document.getElementById('home-type-error'),
-      message: 'Choose a home type.',
-      isValid: function () {
-        return PERMITTED_TYPES.indexOf(typeInput.value) !== -1;
-      }
-    },
-    {
-      input: consentInput,
-      error: document.getElementById('consent-error'),
-      message: 'Please confirm that you agree to be contacted.',
-      isValid: function () {
-        return consentInput.checked;
-      }
-    }
-  ];
-
-  function showError(check) {
-    check.input.setAttribute('aria-invalid', 'true');
-    check.error.textContent = check.message;
+const fields = [
+  {
+    input: name,
+    error: document.getElementById('full-name-error'),
+    message: 'Enter your full name.',
+    valid: () => name.value.trim() !== ''
+  },
+  {
+    input: email,
+    error: document.getElementById('email-error'),
+    message: 'Enter a valid email address.',
+    valid: () => emailPattern.test(email.value.trim())
+  },
+  {
+    input: homeType,
+    error: document.getElementById('home-type-error'),
+    message: 'Choose a home type.',
+    valid: () => allowedTypes.includes(homeType.value)
+  },
+  {
+    input: consent,
+    error: document.getElementById('consent-error'),
+    message: 'Please confirm that you agree to be contacted.',
+    valid: () => consent.checked
   }
+];
 
-  function clearError(check) {
-    check.input.removeAttribute('aria-invalid');
-    check.error.textContent = '';
-  }
+function setError(field, message) {
+  field.input.setAttribute('aria-invalid', message ? 'true' : 'false');
+  field.error.textContent = message;
+}
 
-  form.addEventListener('submit', function (event) {
-    // Always suppress navigation and submission, valid or not.
-    event.preventDefault();
-    status.textContent = '';
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  status.textContent = '';
 
-    let firstInvalid = null;
+  let firstInvalid = null;
 
-    checks.forEach(function (check) {
-      if (check.isValid()) {
-        clearError(check);
-      } else {
-        showError(check);
-        if (!firstInvalid) firstInvalid = check.input;
-      }
-    });
-
-    if (firstInvalid) {
-      firstInvalid.focus();
-      return;
+  fields.forEach((field) => {
+    if (field.valid()) {
+      setError(field, '');
+    } else {
+      setError(field, field.message);
+      firstInvalid = firstInvalid || field.input;
     }
-
-    status.textContent = 'Validation complete. Your enquiry has not been sent.';
   });
 
-  // Clear an error as soon as its field is corrected.
-  checks.forEach(function (check) {
-    const eventName = check.input === typeInput || check.input === consentInput
-      ? 'change'
-      : 'input';
+  if (firstInvalid) {
+    firstInvalid.focus();
+    return;
+  }
 
-    check.input.addEventListener(eventName, function () {
-      if (check.isValid()) clearError(check);
-    });
+  status.textContent = 'Validation complete. Your enquiry has not been sent.';
+});
+
+fields.forEach((field) => {
+  const eventName = field.input === homeType || field.input === consent ? 'change' : 'input';
+  field.input.addEventListener(eventName, () => {
+    if (field.valid()) setError(field, '');
   });
-})();
+});
