@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Register your interest in a guided property conversation with Green Real Estate Agency Global.">
+  <title>Green Real Estate Agency Global | Property enquiry registration</title>
+  <link rel="icon" href="assets/green-wordmark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="index.html">
+        <img src="assets/green-wordmark.svg" width="350" height="64" alt="Green Real Estate Agency Global">
+      </a>
+      <a class="btn site-header__cta" href="#register">
+        <span class="site-header__cta-short">Register</span>
+        <span class="site-header__cta-long">Register interest</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="eyebrow">PLAN YOUR NEXT MOVE</p>
+        <h1 id="hero-title">A clearer path<br class="br-mobile"> to<br class="br-wide"> your next home.</h1>
+        <p class="hero__text">Explore your priorities and register for a guided property conversation.</p>
+        <a class="btn" href="#register">Register your interest</a>
+      </div>
+      <figure class="hero__media">
+        <img src="assets/hero-home.webp" width="1536" height="1024" alt="Contemporary white home with a landscaped front garden">
+      </figure>
+    </section>
+
+    <section class="register container" id="register" aria-labelledby="register-title">
+      <div class="register__intro">
+        <h2 id="register-title">Start with what matters to you.</h2>
+        <p>Tell us your preferred home type. Keep your first step simple.</p>
+      </div>
+
+      <div class="register__card">
+        <h2 id="form-title">Register your interest</h2>
+        <form id="register-form" novalidate aria-labelledby="form-title">
+          <div class="field">
+            <label for="full-name">Full name</label>
+            <input id="full-name" name="fullName" type="text" placeholder="Your full name" autocomplete="name" required aria-describedby="full-name-error">
+            <p class="field__error" id="full-name-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="email-error">
+            <p class="field__error" id="email-error" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="home-type">Preferred home type</label>
+            <select id="home-type" name="homeType" required aria-describedby="home-type-error">
+              <option value="">Select a home type</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Townhouse">Townhouse</option>
+              <option value="Detached home">Detached home</option>
+            </select>
+            <p class="field__error" id="home-type-error" aria-live="polite"></p>
+          </div>
+
+          <div class="consent">
+            <input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error">
+            <label for="consent">I agree to be contacted about my property enquiry.</label>
+          </div>
+          <p class="field__error consent__error" id="consent-error" aria-live="polite"></p>
+
+          <button class="btn form__submit" type="submit">Check my details</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <p class="form__privacy">Your details stay in this browser. Read the <a href="privacy.html">form privacy information</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__identity">
+        <p class="site-footer__brand">Green Real Estate Agency Global</p>
+        <p class="site-footer__tagline">Property enquiry registration.</p>
+        <p class="site-footer__copyright">© 2026 Green Real Estate Agency Global.</p>
+      </div>
+      <a class="site-footer__privacy" href="privacy.html">Form privacy information</a>
+    </div>
+  </footer>
+</body>
+</html>

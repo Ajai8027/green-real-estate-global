@@ -1,0 +1,593 @@
+/* ==========================================================================
+   1. Tokens
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  --canvas: #F8F6F0;
+  --primary: #204C3D;
+  --primary-hover: #173B30;
+  --ink: #173C30;
+  --muted: #54685F;
+  --surface: #FFFFFF;
+  --field-border: #AFBDB4;
+  --card-border: #E0E6DF;
+  --footer: #E5EBDD;
+  --placeholder: #64796D;
+  --error: #A4262C;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --control-height: 48px;
+
+  --font: Arial, sans-serif;
+  --gutter: 16px;
+}
+
+/* ==========================================================================
+   2. Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  z-index: 10;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  left: 8px;
+}
+
+/* Responsive headline breaks: the reference wraps at different words on
+   small screens versus tablet/desktop. */
+.br-wide {
+  display: none;
+}
+
+/* ==========================================================================
+   3. Layout
+   ========================================================================== */
+/* The max-width reserves the gutter on each side so the content box is
+   exactly 1200px wide on large screens (120px outer margins at 1440px). */
+.container {
+  width: 100%;
+  max-width: calc(1200px + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.site-header {
+  padding-block: 18px;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-header__brand img {
+  width: 205px;
+  height: auto;
+}
+
+/* ==========================================================================
+   4. Components
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--control-height);
+  padding-inline: 12px;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: var(--surface);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.site-header__cta {
+  padding-inline: 12px;
+}
+
+.site-header__cta-short,
+.site-header__cta-long {
+  white-space: nowrap;
+}
+
+.site-header__cta-long {
+  display: none;
+}
+
+/* --- Hero --- */
+.hero {
+  padding-top: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+.hero h1 {
+  margin: 0 0 30px;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42px;
+}
+
+.hero__text {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.hero__media {
+  margin: 36px 0 0;
+}
+
+.hero__media img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+/* --- Registration --- */
+.register {
+  padding-top: 48px;
+}
+
+.register__intro {
+  margin-bottom: 52px;
+}
+
+.register__intro h2 {
+  margin: 0 0 16px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.register__intro p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.register__card {
+  padding: 20px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.register__card h2 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* --- Form controls --- */
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  height: var(--control-height);
+  padding: 0 14px;
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+}
+
+.field select {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2354685F' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.field input::placeholder {
+  color: var(--placeholder);
+  opacity: 1;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 24px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.consent input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  accent-color: var(--primary);
+}
+
+.form__submit {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.form__privacy {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.form__privacy a,
+.site-footer__privacy {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ==========================================================================
+   5. Form states
+   ========================================================================== */
+.field__error,
+.form__status {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.field__error {
+  color: var(--error);
+}
+
+.field__error:empty,
+.form__status:empty {
+  display: none;
+}
+
+.consent__error {
+  margin-top: 8px;
+}
+
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.consent input[aria-invalid="true"] {
+  outline: 2px solid var(--error);
+  outline-offset: 2px;
+}
+
+.form__status {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   6. Footer
+   ========================================================================== */
+.site-footer {
+  margin-top: 76px;
+  padding-block: 32px;
+  background: var(--footer);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.site-footer__brand {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.site-footer__tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-footer__copyright {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.site-footer__privacy {
+  align-self: flex-start;
+  font-size: 13px;
+}
+
+/* --- Privacy page --- */
+.privacy-page {
+  padding-top: 48px;
+}
+
+.privacy-page h1 {
+  margin: 0 0 24px;
+  font-size: 34px;
+  line-height: 42px;
+}
+
+.privacy-page p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.privacy-page .btn {
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   7. Media queries — tablet (mobile-first)
+   ========================================================================== */
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+  }
+
+  .site-header__brand img {
+    width: 300px;
+  }
+
+  .site-header__cta {
+    padding-inline: 30px;
+  }
+
+  .br-mobile {
+    display: none;
+  }
+
+  .br-wide {
+    display: inline;
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .eyebrow {
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+
+  .hero h1 {
+    margin-bottom: 44px;
+    font-size: 44px;
+    line-height: 54px;
+  }
+
+  .hero__text {
+    max-width: 560px;
+    margin-bottom: 32px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .hero__media {
+    margin-top: 32px;
+  }
+
+  .register {
+    padding-top: 59px;
+  }
+
+  .register__intro {
+    margin-bottom: 40px;
+  }
+
+  .register__intro h2 {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  .register__intro p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .register__card {
+    padding: 32px;
+  }
+
+  .register__card h2 {
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+
+  .consent {
+    font-size: 14px;
+  }
+
+  .form__privacy {
+    font-size: 13px;
+  }
+
+  .site-footer {
+    margin-top: 57px;
+  }
+
+  .site-footer__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .site-footer__privacy {
+    align-self: auto;
+  }
+
+  .privacy-page h1 {
+    font-size: 44px;
+    line-height: 54px;
+  }
+}
+
+/* ==========================================================================
+   8. Media queries — desktop
+   ========================================================================== */
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 40px;
+  }
+
+  .site-header__cta {
+    padding-inline: 35px;
+  }
+
+  .site-header__cta-short {
+    display: none;
+  }
+
+  .site-header__cta-long {
+    display: inline;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 560px;
+    gap: 80px;
+    align-items: start;
+    padding-top: 40px;
+  }
+
+  .hero h1 {
+    margin-bottom: 16px;
+    font-size: 52px;
+    line-height: 64px;
+  }
+
+  .hero__text {
+    max-width: 480px;
+  }
+
+  .hero__media {
+    margin-top: 0;
+  }
+
+  .register {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 620px;
+    gap: 40px;
+    align-items: start;
+    padding-top: 60px;
+  }
+
+  .register__intro {
+    padding-top: 62px;
+    margin-bottom: 0;
+  }
+
+  .register__card {
+    margin-top: 16px;
+  }
+
+  .register__intro h2 {
+    margin-bottom: 24px;
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .register__intro p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .register__card h2 {
+    font-size: 24px;
+  }
+
+  .site-footer {
+    margin-top: 54px;
+    padding-block: 40px;
+  }
+
+  .privacy-page h1 {
+    font-size: 52px;
+    line-height: 64px;
+  }
+}
