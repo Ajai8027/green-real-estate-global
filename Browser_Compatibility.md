@@ -121,3 +121,14 @@ The live URL was reopened in Edge 157.0.4341.60 on 22 November 2026 and retested
 | `evidence/keyboard-focus.png` | Keyboard focus on a control after tabbing |
 | `evidence/live-edge-375.png` | Live deployment at 375 × 900 |
 | `evidence/live-edge-1440.png` | Live deployment at 1440 × 900 |
+
+## 12. Code cleanup re-verification (22 November 2026)
+
+After a cleanup pass (simplified status-region attributes in `index.html`, merged duplicate CSS rules and comments, modernised `app.js` to arrow functions and `includes()`, and removed the generated `.vercel/` cache), everything was re-run:
+
+- Edge 157.0.4341.60 at 375, 768, 1024 and 1440px: `scrollWidth = innerWidth` at every width and all measured positions unchanged from the table in section 2 (e.g. hero CTA y330 / y384 / y404, hero image y414 / y464, form card y878 / y1116 / y580, footer y1492 / y1172).
+- Form cases F01–F06: all six observed messages correct, first-invalid focus and live error clearing still work.
+- 0 console errors and 0 failed requests; both images loaded at all widths.
+- Nu HTML Checker: 0 errors and 0 warnings for both HTML files.
+- Screenshots in `evidence/` regenerated from the cleaned code.
+- Changes pushed to GitHub (`ea76898`) and redeployed to https://green-real-estate-global.vercel.app. The live URL was reopened and retested: all CTA and privacy links, all six form cases, both viewports, and zero console or asset errors.
