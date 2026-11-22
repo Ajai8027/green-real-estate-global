@@ -87,14 +87,25 @@ The checker returned an empty `messages` array for both files. No remaining warn
 
 ## 9. Deployed-site retest (T11)
 
-**Not performed.** No GitHub repository or live deployment was created from this workspace (no GitHub credentials were available). Relative paths were verified on the local HTTP server, and publish commands are provided in `README.md`, but the live HTTPS URL must be re-tested after publishing.
+Repository: https://github.com/Ajai8027/green-real-estate-global (public)
+Live URL: https://green-real-estate-global.vercel.app
+
+The live URL was reopened in Edge 157.0.4341.60 on 22 November 2026 and retested:
+
+| Check | Observed result |
+|---|---|
+| 375px and 1440px layout | `scrollWidth = innerWidth` at both widths; no overflow; both images loaded (`naturalWidth` 1536 hero, 350 wordmark). Evidence: `evidence/live-edge-375.png`, `evidence/live-edge-1440.png` |
+| Static asset paths on deployment | `index.html`, `styles.css`, `app.js`, `privacy.html` and both `assets/` files all returned HTTP 200 from the live host |
+| Header CTA | Reached `https://green-real-estate-global.vercel.app/index.html#register` |
+| Form privacy helper and footer link | Both reached `/privacy.html`; the return link reached `/index.html#register` |
+| Form cases F01–F06 | All six produced the same observed messages as locally; no case navigated away from the page |
+| Console and network | 0 console errors, 0 failed requests on the live site |
 
 ## 10. Unresolved issues and limitations
 
 1. Google Chrome and Mozilla Firefox were not available and were not tested. Only Microsoft Edge 157.0.4341.60 was exercised, so cross-browser claims beyond Chromium cannot be made.
-2. No live deployment or reviewer-accessible GitHub repository was created; the URL fields in `README.md` and `COMPLETION_NOTE.txt` remain `<pending>`.
-3. No Google Drive folder was created or shared; `COMPLETION_NOTE.txt` is supplied in the repository instead.
-4. Form validation is a local check only; no enquiry is sent or stored, as specified.
+2. No Google Drive folder was created or shared; `COMPLETION_NOTE.txt` is supplied in the repository instead.
+3. Form validation is a local check only; no enquiry is sent or stored, as specified.
 
 ## 11. Evidence index
 
@@ -108,3 +119,5 @@ The checker returned an empty `messages` array for both files. No remaining warn
 | `evidence/form-error-consent.png` | F05 consent error state |
 | `evidence/form-success.png` | F01 success announcement |
 | `evidence/keyboard-focus.png` | Keyboard focus on a control after tabbing |
+| `evidence/live-edge-375.png` | Live deployment at 375 × 900 |
+| `evidence/live-edge-1440.png` | Live deployment at 1440 × 900 |

@@ -38,23 +38,10 @@ deliverable/
 
 ## Repository and live URL
 
-_Not published from this workspace._ No GitHub credentials were available, so the repository URL and live HTTPS deployment URL must be filled in after pushing these files and deploying the folder to GitHub Pages, Vercel or equivalent:
+- GitHub repository URL: **https://github.com/Ajai8027/green-real-estate-global**
+- Live deployment URL: **https://green-real-estate-global.vercel.app**
 
-- GitHub repository URL: `<pending>`
-- Live deployment URL: `<pending>`
-
-Example publish commands (run from this folder after authenticating with GitHub):
-
-```powershell
-git init
-git add .
-git commit -m "Add responsive Green Real Estate landing page"
-git branch -M main
-git remote add origin https://github.com/<owner>/<repository>.git
-git push -u origin main
-```
-
-For Vercel, deploy this folder as a static site with no build command and `./` as the output directory; the existing relative asset and privacy links will survive deployment.
+The repository is public so the reviewer can open it. The Vercel project is connected to the repository, so further pushes to `main` redeploy automatically. Deploy as a static site with no build command and `./` as the output directory; the relative asset and privacy links survive deployment (verified on the live URL).
 
 ## Limitations
 

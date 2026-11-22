@@ -2,18 +2,19 @@ GREEN REAL ESTATE AGENCY GLOBAL — COMPLETION NOTE
 
 Job ID: iz81MJtSieKOyhtxSKlu
 
-Repository URL: <pending — push this folder to GitHub and fill in>
-Live HTTPS URL: <pending — deploy this folder and fill in>
-Reviewer access: <pending — grant the authorized reviewer read access>
+Repository URL: https://github.com/Ajai8027/green-real-estate-global
+Live HTTPS URL: https://green-real-estate-global.vercel.app
+Reviewer access: repository is public; live URL is publicly reachable without authentication
 
-Documentation: Browser_Compatibility.md (in this folder)
-Evidence: evidence/ (in this folder)
-Setup: README.md (in this folder)
+Documentation: Browser_Compatibility.md (in this folder and in the repository)
+Evidence: evidence/ (in this folder and in the repository)
+Setup: README.md (in this folder and in the repository)
 
 Status: The static page is complete and verified locally in Microsoft Edge
 157.0.4341.60 at 375, 768, 1024 and 1440px. All six form cases passed, the
 Nu HTML Checker reported 0 errors and 0 warnings for both HTML files, and no
-asset or console errors remain. Google Chrome and Firefox were not installed
-and were not tested. GitHub push, live deployment and the Google Drive folder
-were not created from this workspace; fill in the URLs above after publishing
-and re-run the CTA, privacy and form checks on the live site.
+asset or console errors remain. The live deployment was reopened and retested:
+all CTA and privacy links, all six form cases and both images worked at 375px
+and 1440px with no console or asset errors. Google Chrome and Firefox were not
+installed and were not tested. No Google Drive folder was created; this note
+is included in the repository instead.
